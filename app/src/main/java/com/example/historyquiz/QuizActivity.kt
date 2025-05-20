@@ -11,13 +11,13 @@ import androidx.core.view.WindowInsetsCompat
 
 class QuizActivity : AppCompatActivity() {
     private val questions = arrayOf(
-        "Nelson Mandela was president in 1994",
-        "The Great Wall of China was built in one year",
-        "World War II ended in 1945",
-        "The pyramids were built by robots",
-        "South Africa became a republic in 1961"
+        "The Great Wall of China is visible from space.",
+        "Human bones are stronger than concrete.",
+        "Lightning never strikes the same place twice.",
+        "The pyramids were built by robots.",
+        "Australia is both a country and a continent."
     )
-    private val answers = arrayOf(true, false, true, false, true)
+    private val answers = arrayOf(false, true, false, false, true)
 
     private var index = 0
     private var score = 0
@@ -41,6 +41,8 @@ class QuizActivity : AppCompatActivity() {
 
         questionText.text = questions[index]
 
+
+
         trueBtn.setOnClickListener { checkAnswer(true) }
         falseBtn.setOnClickListener { checkAnswer(false) }
 
@@ -51,6 +53,8 @@ class QuizActivity : AppCompatActivity() {
                 feedbackText.text = ""
             } else {
                 val intent = Intent(this, ScoreActivity::class.java)
+                intent.putExtra("score", score)
+                startActivity(intent)
             }
         }
     }
